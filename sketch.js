@@ -13,6 +13,17 @@ var piso;
 var teiadomiranha;
 var lemon;
 var colabastao;
+var papeldeparede;
+var magali;
+var sansao;
+var socrates;
+var aristoteles;
+
+function preload(){
+  papeldeparede = loadImage("./Imagens/background.png");
+  magali = loadImage("./Imagens/melon.png");
+  sansao = loadImage("./Imagens/Rabbit-01.png");
+}
 
 function setup() 
 {
@@ -22,6 +33,7 @@ function setup()
  
   rectMode(CENTER);
   ellipseMode(RADIUS);
+  imageMode(CENTER);
   textSize(50);
 
   piso = new Piso(200,690,600,20);
@@ -29,17 +41,32 @@ function setup()
   lemon=Bodies.circle(300,300,15);
   Matter.Composite.add(teiadomiranha.body,lemon);
   colabastao=new Fitacrepe(teiadomiranha,lemon);
+  socrates=createSprite(250,620,100,100);
+  socrates.addImage(sansao);
+  socrates.scale=0.3;
+  aristoteles=createImg("./Imagens/cut_btn.png");
+  aristoteles.position(220,30);
+  aristoteles.size(50,50);
+  aristoteles.mouseClicked(platao);
+
 }
 
 function draw() 
 {
   background(51);
+  image(papeldeparede, width/2, height/2, 500, 700);
+
   Engine.update(engine);
   piso.tosemideia();
   teiadomiranha.show();
-  ellipse(lemon.position.x,lemon.position.y,15,15);
+  image(magali,lemon.position.x,lemon.position.y,60,60);
+  drawSprites();
 }
 
-
+function platao(){
+  teiadomiranha.break();
+  colabastao.invisible();
+  colabastao=null;
+}
 
 
