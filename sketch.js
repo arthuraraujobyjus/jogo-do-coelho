@@ -28,6 +28,12 @@ var bills;
 var majinBoo;
 var numero18;
 var titi;
+var lufy;
+var zoro;
+var usop;
+var shanks;
+var ace;
+var goldroger;
 
 function preload(){
   papeldeparede = loadImage("./Imagens/background.png");
@@ -69,11 +75,15 @@ function setup()
   vegeta.frameDelay = 15;
 
   piso = new Piso(200,690,600,20);
-  teiadomiranha=new Rope(6,{x:245,y:30});
+  teiadomiranha=new Rope(8,{x:40,y:30});
+  usop=new Rope(7,{x:370,y:40});
+  shanks=new Rope(4,{x:400,y:225});
   lemon=Bodies.circle(300,300,15);
   Matter.Composite.add(teiadomiranha.body,lemon);
   colabastao=new Fitacrepe(teiadomiranha,lemon);
-  socrates=createSprite(420,590,100,100);
+  ace=new Fitacrepe(usop,lemon);
+  goldroger=new Fitacrepe(shanks,lemon);
+  socrates=createSprite(170,590,100,100);
   socrates.addImage(sansao);
   socrates.addAnimation("piscando", goku);
   socrates.addAnimation("comendo", vegeta);
@@ -81,13 +91,17 @@ function setup()
   socrates.changeAnimation("piscando");
   socrates.scale=0.3;
   aristoteles=createImg("./Imagens/cut_btn.png");
-  aristoteles.position(220,30);
+  aristoteles.position(20,30);
   aristoteles.size(50,50);
   aristoteles.mouseClicked(platao);
-  numero18=createImg("./Imagens/balloon.png");
-  numero18.position(10,200);
-  numero18.size(150,100);
-  numero18.mouseClicked(numero17);
+  lufy=createImg("./Imagens/cut_btn.png");
+  lufy.position(330,35);
+  lufy.size(50,50);
+  lufy.mouseClicked(nami);
+  zoro=createImg("./Imagens/cut_btn.png");
+  zoro.position(360,200);
+  zoro.size(50,50);
+  zoro.mouseClicked(sanji);
   titi=createImg("./Imagens/mute.png");
   titi.position(450,20);
   titi.size(50,50);
@@ -104,6 +118,8 @@ function draw()
   Engine.update(engine);
   piso.tosemideia();
   teiadomiranha.show();
+  usop.show();
+  shanks.show();
   if(lemon !== null){
   image(magali,lemon.position.x,lemon.position.y,60,60);
   }
@@ -153,7 +169,18 @@ function bulma(){
   }
 
 }
-
+function nami(){
+  kuririn.play();
+  usop.break();
+  ace.invisible();
+  ace=null;
+}
+function sanji(){
+  kuririn.play();
+  shanks.break();
+  goldroger.invisible();
+  goldroger=null;
+}
 
 
 
